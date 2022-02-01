@@ -2,10 +2,7 @@ package de.sybit.spring.order;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -20,6 +17,7 @@ public class Order {
 
     private Timestamp closedAt;
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     private Long customerId;

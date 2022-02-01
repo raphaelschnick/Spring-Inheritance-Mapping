@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,7 +28,10 @@ public class OrderService {
         if (order.getId() != null)
             throw new EntityAlreadyExistsException("Order with ID: " + order.getId() + " already exists");
 
+        order.setClosedAt(new Timestamp(new Date().getTime()));
+        order.setStatus(OrderStatus.PLACED);
         Order result = this.repository.save(order);
+
         LOG.debug("<- add() result={}", result);
         return result;
     }

@@ -19,7 +19,7 @@ public class Truck {
 
     private Long manufacturerId;
 
-    private int maxWeight;
+    private double maxWeight;
 
     public Truck() {}
 
@@ -53,11 +53,11 @@ public class Truck {
         this.manufacturerId = manufacturerId;
     }
 
-    public int getMaxWeight() {
+    public double getMaxWeight() {
         return maxWeight;
     }
 
-    public void setMaxWeight(int maxWeight) {
+    public void setMaxWeight(double maxWeight) {
         this.maxWeight = maxWeight;
     }
 
