@@ -1,4 +1,4 @@
-package de.sybit.spring.wheel;
+package de.sybit.spring.customer;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,22 +8,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Wheel {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    private int size;
+    private String name;
 
-    private String color;
+    public Customer() {}
 
-    public Wheel() {}
-
-    public Wheel(int size, String color) {
-        this.size = size;
-        this.color = color;
+    public Customer(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -34,28 +31,19 @@ public class Wheel {
         this.id = id;
     }
 
-    public int getSize() {
-        return size;
+    public String getName() {
+        return name;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Wheel{" +
+        return "Customer{" +
                 "id=" + id +
-                ", size=" + size +
-                ", color='" + color + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

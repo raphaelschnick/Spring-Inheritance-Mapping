@@ -1,4 +1,4 @@
-package de.sybit.spring.wheel;
+package de.sybit.spring.products.wheel;
 
 import de.sybit.spring.exceptions.EntityNotExistsException;
 import de.sybit.spring.exceptions.EntityNotFoundException;

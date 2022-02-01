@@ -3,6 +3,8 @@ package de.sybit.spring.car;
 
 import de.sybit.spring.exceptions.EntityAlreadyExistsException;
 import de.sybit.spring.exceptions.EntityNotFoundException;
+import de.sybit.spring.products.car.Car;
+import de.sybit.spring.products.car.CarService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ class CarServiceTest {
 
     @Test
     void add() {
-        Car car = new Car("#0000F", 1L);
+        Car car = new Car("#0000F", 1L, 20.000);
 
         Car result = service.add(car);
 
@@ -29,7 +31,7 @@ class CarServiceTest {
 
     @Test
     void add_withId() {
-        Car car = new Car("#0000F", 1L);
+        Car car = new Car("#0000F", 1L, 20.000);
         car.setId(100L);
 
         Assertions.assertThrows(EntityAlreadyExistsException.class, () -> service.add(car));

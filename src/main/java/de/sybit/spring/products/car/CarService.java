@@ -1,4 +1,4 @@
-package de.sybit.spring.car;
+package de.sybit.spring.products.car;
 
 import de.sybit.spring.exceptions.EntityAlreadyExistsException;
 import de.sybit.spring.exceptions.EntityNotExistsException;

@@ -1,11 +1,14 @@
-package de.sybit.spring.car;
+package de.sybit.spring.products.truck;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Car {
+public class Truck {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -16,11 +19,14 @@ public class Car {
 
     private Long manufacturerId;
 
-    public Car() {}
+    private int maxWeight;
 
-    public Car(String color, Long manufacturerId) {
+    public Truck() {}
+
+    public Truck(String color, Long manufacturerId, int maxWeight) {
         this.color = color;
         this.manufacturerId = manufacturerId;
+        this.maxWeight = maxWeight;
     }
 
     public Long getId() {
@@ -47,12 +53,21 @@ public class Car {
         this.manufacturerId = manufacturerId;
     }
 
+    public int getMaxWeight() {
+        return maxWeight;
+    }
+
+    public void setMaxWeight(int maxWeight) {
+        this.maxWeight = maxWeight;
+    }
+
     @Override
     public String toString() {
-        return "Car{" +
+        return "Truck{" +
                 "id=" + id +
                 ", color='" + color + '\'' +
                 ", manufacturerId=" + manufacturerId +
+                ", maxWeight=" + maxWeight +
                 '}';
     }
 }
