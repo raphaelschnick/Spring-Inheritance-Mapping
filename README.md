@@ -1,0 +1,1 @@
+# Spring-Inheritance-Mapping
