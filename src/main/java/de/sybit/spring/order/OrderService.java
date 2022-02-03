@@ -28,7 +28,7 @@ public class OrderService {
         if (order.getId() != null)
             throw new EntityAlreadyExistsException("Order with ID: " + order.getId() + " already exists");
 
-        order.setClosedAt(new Timestamp(new Date().getTime()));
+        order.setCreatedAt(new Timestamp(new Date().getTime()));
         order.setStatus(OrderStatus.PLACED);
         Order result = this.repository.save(order);
 

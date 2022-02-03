@@ -1,5 +1,6 @@
 package de.sybit.spring.products.wheel;
 
+import de.sybit.spring.exceptions.EntityAlreadyExistsException;
 import de.sybit.spring.exceptions.EntityNotExistsException;
 import de.sybit.spring.exceptions.EntityNotFoundException;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class WheelService {
     public Wheel add(@NonNull Wheel wheel) {
         LOG.debug("-> add() wheel={}", wheel);
         if (wheel.getId() != null)
-            throw new IllegalArgumentException("Wheel with ID: " + wheel.getId() + " already exists");
+            throw new EntityAlreadyExistsException("Wheel with ID: " + wheel.getId() + " already exists");
 
         Wheel result = this.repository.save(wheel);
         LOG.debug("<- add() result={}", result);

@@ -21,9 +21,9 @@ public class Car {
     public Car() {}
 
     public Car(String color, Long manufacturerId, double price) {
-        this.color = color;
-        this.manufacturerId = manufacturerId;
-        this.price = price;
+        this.setColor(color);
+        this.setManufacturerId(manufacturerId);
+        this.setPrice(price);
     }
 
     public Long getId() {

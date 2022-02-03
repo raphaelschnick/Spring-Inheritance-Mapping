@@ -6,10 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class EntityAlreadyExistsException extends RuntimeException {
 
-    public EntityAlreadyExistsException() {
-        super();
-    }
-
     public EntityAlreadyExistsException(String message) {
         super(message);
     }

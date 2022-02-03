@@ -21,12 +21,15 @@ public class Truck {
 
     private double maxWeight;
 
+    private double price;
+
     public Truck() {}
 
-    public Truck(String color, Long manufacturerId, int maxWeight) {
-        this.color = color;
-        this.manufacturerId = manufacturerId;
-        this.maxWeight = maxWeight;
+    public Truck(String color, Long manufacturerId, int maxWeight, double price) {
+        this.setColor(color);
+        this.setManufacturerId(manufacturerId);
+        this.setMaxWeight(maxWeight);
+        this.setPrice(price);
     }
 
     public Long getId() {
@@ -61,6 +64,14 @@ public class Truck {
         this.maxWeight = maxWeight;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Truck{" +
@@ -68,6 +79,7 @@ public class Truck {
                 ", color='" + color + '\'' +
                 ", manufacturerId=" + manufacturerId +
                 ", maxWeight=" + maxWeight +
+                ", price=" + price +
                 '}';
     }
 }

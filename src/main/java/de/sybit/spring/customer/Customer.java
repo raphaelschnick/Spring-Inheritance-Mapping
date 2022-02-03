@@ -2,10 +2,8 @@ package de.sybit.spring.customer;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 public class Customer {
@@ -15,12 +13,18 @@ public class Customer {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    private String name;
+    private int accessLevel;
+
+    private Timestamp joinedAt;
+
+    private Long customerDetailsId;
 
     public Customer() {}
 
-    public Customer(String name) {
-        this.name = name;
+    public Customer(int accessLevel, Timestamp joinedAt, Long customerDetailsId) {
+        this.setAccessLevel(accessLevel);
+        this.setJoinedAt(joinedAt);
+        this.setCustomerDetailsId(customerDetailsId);
     }
 
     public Long getId() {
@@ -31,19 +35,37 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getAccessLevel() {
+        return accessLevel;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAccessLevel(int accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
+    public Timestamp getJoinedAt() {
+        return joinedAt;
+    }
+
+    public void setJoinedAt(Timestamp joinedAt) {
+        this.joinedAt = joinedAt;
+    }
+
+    public Long getCustomerDetailsId() {
+        return customerDetailsId;
+    }
+
+    public void setCustomerDetailsId(Long customerDetailsId) {
+        this.customerDetailsId = customerDetailsId;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", accessLevel=" + accessLevel +
+                ", joinedAt=" + joinedAt +
+                ", customerDetailsId=" + customerDetailsId +
                 '}';
     }
 }

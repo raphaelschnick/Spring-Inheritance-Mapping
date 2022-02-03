@@ -19,11 +19,14 @@ public class Wheel {
 
     private String color;
 
+    private double price;
+
     public Wheel() {}
 
-    public Wheel(int size, String color) {
-        this.size = size;
-        this.color = color;
+    public Wheel(int size, String color, double price) {
+        this.setSize(size);
+        this.setColor(color);
+        this.setPrice(price);
     }
 
     public Long getId() {
@@ -50,12 +53,21 @@ public class Wheel {
         this.color = color;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Wheel{" +
                 "id=" + id +
                 ", size=" + size +
                 ", color='" + color + '\'' +
+                ", price=" + price +
                 '}';
     }
 }

@@ -27,7 +27,7 @@ public class Order {
     public Order() {}
 
     public Order(Long customerId) {
-        this.customerId = customerId;
+        this.setCustomerId(customerId);
     }
 
     public Long getId() {

@@ -19,14 +19,14 @@ public class Bike {
 
     private Long manufacturerId;
 
-    private int price;
+    private double price;
 
     public Bike() {}
 
-    public Bike(String color, Long manufacturerId, int price) {
-        this.color = color;
-        this.manufacturerId = manufacturerId;
-        this.price = price;
+    public Bike(String color, Long manufacturerId, double price) {
+        this.setColor(color);
+        this.setManufacturerId(manufacturerId);
+        this.setPrice(price);
     }
 
     public Long getId() {
@@ -53,11 +53,11 @@ public class Bike {
         this.manufacturerId = manufacturerId;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
