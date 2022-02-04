@@ -1,6 +1,9 @@
-package de.sybit.spring.customer;
+package de.sybit.spring;
 
 
+import de.sybit.spring.customer.Customer;
+import de.sybit.spring.customer.CustomerRepository;
+import de.sybit.spring.customer.CustomerService;
 import de.sybit.spring.exceptions.EntityAlreadyExistsException;
 import de.sybit.spring.exceptions.EntityNotExistsException;
 import de.sybit.spring.exceptions.EntityNotFoundException;
