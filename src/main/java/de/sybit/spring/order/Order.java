@@ -1,11 +1,15 @@
 package de.sybit.spring.order;
 
+import de.sybit.spring.customer.Customer;
+import de.sybit.spring.products.Product;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
+@Table(name = "`order`")
 public class Order {
 
     @Id
@@ -20,14 +24,17 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    private Long customerId;
+    @ManyToOne
+    private Customer customer;
 
-    // TODO: Ordered Items?
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Product> products;
 
     public Order() {}
 
-    public Order(Long customerId) {
-        this.setCustomerId(customerId);
+    public Order(Customer customer, List<Product> products) {
+        this.customer = customer;
+        this.products = products;
     }
 
     public Long getId() {
@@ -62,13 +69,31 @@ public class Order {
         this.status = status;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
 
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", createdAt=" + createdAt +
+                ", closedAt=" + closedAt +
+                ", status=" + status +
+                ", customer=" + customer +
+                ", products=" + products +
+                '}';
+    }
 }

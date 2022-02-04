@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +28,7 @@ public class CustomerService {
         if (customer.getId() != null)
             throw new EntityAlreadyExistsException("Customer with ID: " + customer.getId() + " already exists");
 
+        customer.setJoinedAt(new Timestamp(new Date().getTime()));
         Customer result = this.repository.save(customer);
         LOG.debug("<- add() result={}", result);
         return result;

@@ -7,6 +7,7 @@ import de.sybit.spring.exceptions.EntityNotFoundException;
 import de.sybit.spring.order.Order;
 import de.sybit.spring.order.OrderRepository;
 import de.sybit.spring.order.OrderService;
+import de.sybit.spring.products.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,9 +39,11 @@ class OrderServiceTest {
 
     public static Order order;
 
+    public static List<Product> products;
+
     @BeforeEach
     void setUp() {
-        order = new Order(1L);
+        order = new Order(CustomerServiceTest.customer, products);
     }
 
     @Test
@@ -49,7 +52,7 @@ class OrderServiceTest {
 
         Order created = orderService.add(order);
 
-        assertThat(created.getCustomerId()).isSameAs(order.getCustomerId());
+        assertThat(created.getCustomer().getId()).isSameAs(order.getCustomer().getId());
         verify(orderRepository).save(order);
     }
 
@@ -72,6 +75,7 @@ class OrderServiceTest {
         Assertions.assertEquals(expected.getClosedAt(), order.getClosedAt());
         Assertions.assertEquals(expected.getCreatedAt(), order.getCreatedAt());
         Assertions.assertEquals(expected.getStatus(), order.getStatus());
+        Assertions.assertEquals(expected.getProducts(), order.getProducts());
         Assertions.assertEquals(expected.toString(), order.toString());
         verify(orderRepository).findById(order.getId());
     }

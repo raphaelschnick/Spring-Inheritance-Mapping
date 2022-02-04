@@ -13,18 +13,26 @@ public class Customer {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
+    private String firstname;
+
+    private String lastname;
+
+    private String email;
+
+    private String phone;
+
     private int accessLevel;
 
     private Timestamp joinedAt;
 
-    private Long customerDetailsId;
-
     public Customer() {}
 
-    public Customer(int accessLevel, Timestamp joinedAt, Long customerDetailsId) {
-        this.setAccessLevel(accessLevel);
-        this.setJoinedAt(joinedAt);
-        this.setCustomerDetailsId(customerDetailsId);
+    public Customer(String firstname, String lastname, String email, String phone, int accessLevel) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phone = phone;
+        this.accessLevel = accessLevel;
     }
 
     public Long getId() {
@@ -51,21 +59,48 @@ public class Customer {
         this.joinedAt = joinedAt;
     }
 
-    public Long getCustomerDetailsId() {
-        return customerDetailsId;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setCustomerDetailsId(Long customerDetailsId) {
-        this.customerDetailsId = customerDetailsId;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 ", accessLevel=" + accessLevel +
                 ", joinedAt=" + joinedAt +
-                ", customerDetailsId=" + customerDetailsId +
                 '}';
     }
 }

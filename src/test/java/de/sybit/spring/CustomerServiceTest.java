@@ -1,6 +1,9 @@
-package de.sybit.spring.customer;
+package de.sybit.spring;
 
 
+import de.sybit.spring.customer.Customer;
+import de.sybit.spring.customer.CustomerRepository;
+import de.sybit.spring.customer.CustomerService;
 import de.sybit.spring.exceptions.EntityAlreadyExistsException;
 import de.sybit.spring.exceptions.EntityNotExistsException;
 import de.sybit.spring.exceptions.EntityNotFoundException;
@@ -12,9 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +34,11 @@ class CustomerServiceTest {
     @InjectMocks
     private CustomerService customerService;
 
-    public static Customer customer;
+    public static Customer customer = new Customer("Max", "Mustermann", "max.mustermann@muster.de", "+49123456789", 2);
 
     @BeforeEach
     void setUp() {
-        customer = new Customer(2, new Timestamp(new Date().getTime()), 1L);
+        customer = new Customer("Max", "Mustermann", "max.mustermann@muster.de", "+49123456789", 2);
     }
 
     @Test
@@ -65,7 +66,10 @@ class CustomerServiceTest {
         Customer expected = customerService.getById(customer.getId());
 
         assertThat(expected).isSameAs(customer);
-        Assertions.assertEquals(expected.getCustomerDetailsId(), customer.getCustomerDetailsId());
+        Assertions.assertEquals(expected.getFirstname(), customer.getFirstname());
+        Assertions.assertEquals(expected.getLastname(), customer.getLastname());
+        Assertions.assertEquals(expected.getEmail(), customer.getEmail());
+        Assertions.assertEquals(expected.getPhone(), customer.getPhone());
         Assertions.assertEquals(expected.getJoinedAt(), customer.getJoinedAt());
         Assertions.assertEquals(expected.getAccessLevel(), customer.getAccessLevel());
         Assertions.assertEquals(expected.toString(), customer.toString());

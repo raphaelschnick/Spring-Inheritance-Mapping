@@ -26,7 +26,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class ManufacturerServiceTest {
+public class ManufacturerServiceTest {
 
     @Mock
     private ManufacturerRepository manufacturerRepository;
@@ -34,7 +34,7 @@ class ManufacturerServiceTest {
     @InjectMocks
     private ManufacturerService manufacturerService;
 
-    public static Manufacturer manufacturer;
+    public static Manufacturer manufacturer = new Manufacturer("Mercedes");
 
     @BeforeEach
     void setUp() {
