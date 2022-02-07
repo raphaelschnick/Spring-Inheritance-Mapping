@@ -66,9 +66,10 @@ public class SpringInheritanceApplication {
 		Order order = new Order(customer, products);
 		this.orderService.add(order);
 		List<Order> orderList = this.orderService.getList();
-		System.out.println("End");
 
-		System.out.println(this.productRepository.findAllCars());
+		List<Car> carList = this.productRepository.findAllCars();
+
+		System.out.println("End");
 	}
 
 }
